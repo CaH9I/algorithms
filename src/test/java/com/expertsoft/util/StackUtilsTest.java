@@ -13,11 +13,11 @@ public class StackUtilsTest {
 
     @Test
     public void reverse() {
-        List<Character> word = asList('l', 'i', 'm', 'b', 'o');
+        var word = List.of('l', 'i', 'm', 'b', 'o');
 
-        List<Character> reverseWord = StackUtils.reverse(word);
+        var reverseWord = StackUtils.reverse(word);
 
-        assertEquals(asList('o', 'b', 'm', 'i', 'l'), reverseWord);
+        assertEquals(List.of('o', 'b', 'm', 'i', 'l'), reverseWord);
     }
 
     @Test
