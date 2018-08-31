@@ -1,5 +1,6 @@
 package com.expertsoft.util;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class SortUtils {
@@ -49,6 +50,40 @@ public class SortUtils {
 
             a[j] = element;
         }
+    }
+
+    public static Long[] mergeSort(Long[] a) {
+        if (a.length > 1) {
+            int mid = a.length / 2;
+            Long[] left = mergeSort(Arrays.copyOfRange(a, 0, mid));
+            Long[] right = mergeSort(Arrays.copyOfRange(a, mid, a.length));
+            return merge(left, right);
+        }
+
+        return a;
+    }
+
+    private static Long[] merge(Long[] left, Long[] right) {
+        Long[] result = new Long[left.length + right.length];
+        int i = 0;
+        int leftIndex = 0;
+        int rightIndex = 0;
+
+        while ((leftIndex < left.length) && (rightIndex < right.length)) {
+            result[i++] = left[leftIndex] < right[rightIndex]
+                    ? left[leftIndex++]
+                    : right[rightIndex++];
+        }
+
+        while (leftIndex < left.length) {
+            result[i++] = left[leftIndex++];
+        }
+
+        while (rightIndex < right.length) {
+            result[i++] = right[rightIndex++];
+        }
+
+        return result;
     }
 
 }
