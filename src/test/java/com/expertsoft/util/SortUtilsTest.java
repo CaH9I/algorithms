@@ -45,4 +45,16 @@ public class SortUtilsTest {
         assertThat(SortUtils.mergeSort(randomArray), new ArrayIsSorted<>());
         assertThat(SortUtils.mergeSort(new Long[] {3L, -5L, 4L, 2L, 8L, 9L, 0L, -4L, 4L}), is(new Long[] {-5L, -4L, 0L, 2L, 3L, 4L, 4L, 8L, 9L}));
     }
+
+    @Test
+    public void quickSort() {
+        Long[] array = {4L, 50L, 30L, 7L, 21L, 80L, 20L, 17L, 10L, 67L, 20L};
+        Long[] randomArray = new Random().longs(1000000).boxed().toArray(Long[]::new);
+
+        SortUtils.quickSort(array, 0, array.length - 1);
+        SortUtils.quickSort(randomArray, 0, randomArray.length - 1);
+
+        assertThat(array, new ArrayIsSorted<>());
+        assertThat(randomArray, new ArrayIsSorted<>());
+    }
 }

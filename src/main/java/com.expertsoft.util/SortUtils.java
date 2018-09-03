@@ -86,4 +86,28 @@ public class SortUtils {
         return result;
     }
 
+    public static void quickSort(Long[] a, int p, int q) {
+        if (p < q) {
+            int m = partition(a, p, q);
+            quickSort(a, p, m - 1);
+            quickSort(a, m + 1, q);
+        }
+    }
+
+    private static int partition(Long[] a, int p, int q) {
+        int start = p;
+        for (int i = p; i < q; i++) {
+            if (a[i] <= a[q]) {
+                swap(a, i, start++);
+            }
+        }
+        swap(a, start, q);
+        return start;
+    }
+
+    private static void swap(Long[] a, int i, int j) {
+        long temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
 }
